@@ -1,4 +1,8 @@
-﻿USE [PnP]
+﻿CREATE DATABASE [PnP]
+
+GO
+
+USE [PnP]
 
 GO
 
