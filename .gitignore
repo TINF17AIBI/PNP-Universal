@@ -2,7 +2,9 @@
 /src/backend/main Application/PnP Universal/PnP Universal/bin/Debug/
 /src/backend/main Application/PnP Universal/PnP Universal/obj/
 *.config
-*.cache
+*.[Cc]ache
+*.suo
+
 # Prerequisites
 *.d
 
