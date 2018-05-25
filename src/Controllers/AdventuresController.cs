@@ -22,45 +22,45 @@ namespace PnP_Universal.Controllers
 
         // GET: api/Adventures
         [HttpGet]
-        public IEnumerable<Adventure> GetAdventure()
+        public IEnumerable<Adventures> GetAdventures()
         {
-            return _context.Adventure;
+            return _context.Adventures;
         }
 
         // GET: api/Adventures/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetAdventure([FromRoute] int id)
+        public async Task<IActionResult> GetAdventures([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var adventure = await _context.Adventure.SingleOrDefaultAsync(m => m.Id == id);
+            var adventures = await _context.Adventures.SingleOrDefaultAsync(m => m.Id == id);
 
-            if (adventure == null)
+            if (adventures == null)
             {
                 return NotFound();
             }
 
-            return Ok(adventure);
+            return Ok(adventures);
         }
 
         // PUT: api/Adventures/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAdventure([FromRoute] int id, [FromBody] Adventure adventure)
+        public async Task<IActionResult> PutAdventures([FromRoute] int id, [FromBody] Adventures adventures)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != adventure.Id)
+            if (id != adventures.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(adventure).State = EntityState.Modified;
+            _context.Entry(adventures).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace PnP_Universal.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AdventureExists(id))
+                if (!AdventuresExists(id))
                 {
                     return NotFound();
                 }
@@ -83,21 +83,21 @@ namespace PnP_Universal.Controllers
 
         // POST: api/Adventures
         [HttpPost]
-        public async Task<IActionResult> PostAdventure([FromBody] Adventure adventure)
+        public async Task<IActionResult> PostAdventures([FromBody] Adventures adventures)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Adventure.Add(adventure);
+            _context.Adventures.Add(adventures);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (AdventureExists(adventure.Id))
+                if (AdventuresExists(adventures.Id))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -107,33 +107,33 @@ namespace PnP_Universal.Controllers
                 }
             }
 
-            return CreatedAtAction("GetAdventure", new { id = adventure.Id }, adventure);
+            return CreatedAtAction("GetAdventures", new { id = adventures.Id }, adventures);
         }
 
         // DELETE: api/Adventures/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAdventure([FromRoute] int id)
+        public async Task<IActionResult> DeleteAdventures([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var adventure = await _context.Adventure.SingleOrDefaultAsync(m => m.Id == id);
-            if (adventure == null)
+            var adventures = await _context.Adventures.SingleOrDefaultAsync(m => m.Id == id);
+            if (adventures == null)
             {
                 return NotFound();
             }
 
-            _context.Adventure.Remove(adventure);
+            _context.Adventures.Remove(adventures);
             await _context.SaveChangesAsync();
 
-            return Ok(adventure);
+            return Ok(adventures);
         }
 
-        private bool AdventureExists(int id)
+        private bool AdventuresExists(int id)
         {
-            return _context.Adventure.Any(e => e.Id == id);
+            return _context.Adventures.Any(e => e.Id == id);
         }
     }
 }

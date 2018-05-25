@@ -10,57 +10,57 @@ using PnP_Universal.Models;
 namespace PnP_Universal.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Users")]
-    public class UsersController : Controller
+    [Route("api/AttributeOwnerships")]
+    public class AttributeOwnershipsController : Controller
     {
         private readonly PnPContext _context;
 
-        public UsersController(PnPContext context)
+        public AttributeOwnershipsController(PnPContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: api/AttributeOwnerships
         [HttpGet]
-        public IEnumerable<Users> GetUsers()
+        public IEnumerable<AttributeOwnership> GetAttributeOwnership()
         {
-            return _context.Users;
+            return _context.AttributeOwnership;
         }
 
-        // GET: api/Users/5
+        // GET: api/AttributeOwnerships/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUsers([FromRoute] int id)
+        public async Task<IActionResult> GetAttributeOwnership([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
+            var attributeOwnership = await _context.AttributeOwnership.SingleOrDefaultAsync(m => m.Id == id);
 
-            if (users == null)
+            if (attributeOwnership == null)
             {
                 return NotFound();
             }
 
-            return Ok(users);
+            return Ok(attributeOwnership);
         }
 
-        // PUT: api/Users/5
+        // PUT: api/AttributeOwnerships/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers([FromRoute] int id, [FromBody] Users users)
+        public async Task<IActionResult> PutAttributeOwnership([FromRoute] int id, [FromBody] AttributeOwnership attributeOwnership)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != users.Id)
+            if (id != attributeOwnership.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(users).State = EntityState.Modified;
+            _context.Entry(attributeOwnership).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace PnP_Universal.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsersExists(id))
+                if (!AttributeOwnershipExists(id))
                 {
                     return NotFound();
                 }
@@ -81,23 +81,23 @@ namespace PnP_Universal.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/AttributeOwnerships
         [HttpPost]
-        public async Task<IActionResult> PostUsers([FromBody] Users users)
+        public async Task<IActionResult> PostAttributeOwnership([FromBody] AttributeOwnership attributeOwnership)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Users.Add(users);
+            _context.AttributeOwnership.Add(attributeOwnership);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (UsersExists(users.Id))
+                if (AttributeOwnershipExists(attributeOwnership.Id))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -107,33 +107,33 @@ namespace PnP_Universal.Controllers
                 }
             }
 
-            return CreatedAtAction("GetUsers", new { id = users.Id }, users);
+            return CreatedAtAction("GetAttributeOwnership", new { id = attributeOwnership.Id }, attributeOwnership);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/AttributeOwnerships/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsers([FromRoute] int id)
+        public async Task<IActionResult> DeleteAttributeOwnership([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
-            if (users == null)
+            var attributeOwnership = await _context.AttributeOwnership.SingleOrDefaultAsync(m => m.Id == id);
+            if (attributeOwnership == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(users);
+            _context.AttributeOwnership.Remove(attributeOwnership);
             await _context.SaveChangesAsync();
 
-            return Ok(users);
+            return Ok(attributeOwnership);
         }
 
-        private bool UsersExists(int id)
+        private bool AttributeOwnershipExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.AttributeOwnership.Any(e => e.Id == id);
         }
     }
 }

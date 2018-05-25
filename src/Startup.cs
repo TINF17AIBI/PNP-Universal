@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using MySql.Data.EntityFrameworkCore;
 using PnP_Universal.Models;
 
 
@@ -29,8 +28,8 @@ namespace PnP_Universal
             services.AddMvc();
 
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=PnP;Trusted_Connection=True;ConnectRetryCount=0";
-            services.AddDbContext<PnPContext>(options => options.UseSqlServer(connection));
+            var connection = @"server = localhost; database = besa_pnp; user = besa; password = 0GdR-6p_yl69x8NOnqrs;SslMode=none";
+            services.AddDbContext<PnPContext>(options => options.UseMySQL(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

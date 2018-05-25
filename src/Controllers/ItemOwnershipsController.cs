@@ -10,57 +10,57 @@ using PnP_Universal.Models;
 namespace PnP_Universal.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Users")]
-    public class UsersController : Controller
+    [Route("api/ItemOwnerships")]
+    public class ItemOwnershipsController : Controller
     {
         private readonly PnPContext _context;
 
-        public UsersController(PnPContext context)
+        public ItemOwnershipsController(PnPContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: api/ItemOwnerships
         [HttpGet]
-        public IEnumerable<Users> GetUsers()
+        public IEnumerable<ItemOwnership> GetItemOwnership()
         {
-            return _context.Users;
+            return _context.ItemOwnership;
         }
 
-        // GET: api/Users/5
+        // GET: api/ItemOwnerships/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUsers([FromRoute] int id)
+        public async Task<IActionResult> GetItemOwnership([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
+            var itemOwnership = await _context.ItemOwnership.SingleOrDefaultAsync(m => m.Id == id);
 
-            if (users == null)
+            if (itemOwnership == null)
             {
                 return NotFound();
             }
 
-            return Ok(users);
+            return Ok(itemOwnership);
         }
 
-        // PUT: api/Users/5
+        // PUT: api/ItemOwnerships/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers([FromRoute] int id, [FromBody] Users users)
+        public async Task<IActionResult> PutItemOwnership([FromRoute] int id, [FromBody] ItemOwnership itemOwnership)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != users.Id)
+            if (id != itemOwnership.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(users).State = EntityState.Modified;
+            _context.Entry(itemOwnership).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace PnP_Universal.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsersExists(id))
+                if (!ItemOwnershipExists(id))
                 {
                     return NotFound();
                 }
@@ -81,23 +81,23 @@ namespace PnP_Universal.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/ItemOwnerships
         [HttpPost]
-        public async Task<IActionResult> PostUsers([FromBody] Users users)
+        public async Task<IActionResult> PostItemOwnership([FromBody] ItemOwnership itemOwnership)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Users.Add(users);
+            _context.ItemOwnership.Add(itemOwnership);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (UsersExists(users.Id))
+                if (ItemOwnershipExists(itemOwnership.Id))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -107,33 +107,33 @@ namespace PnP_Universal.Controllers
                 }
             }
 
-            return CreatedAtAction("GetUsers", new { id = users.Id }, users);
+            return CreatedAtAction("GetItemOwnership", new { id = itemOwnership.Id }, itemOwnership);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/ItemOwnerships/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsers([FromRoute] int id)
+        public async Task<IActionResult> DeleteItemOwnership([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
-            if (users == null)
+            var itemOwnership = await _context.ItemOwnership.SingleOrDefaultAsync(m => m.Id == id);
+            if (itemOwnership == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(users);
+            _context.ItemOwnership.Remove(itemOwnership);
             await _context.SaveChangesAsync();
 
-            return Ok(users);
+            return Ok(itemOwnership);
         }
 
-        private bool UsersExists(int id)
+        private bool ItemOwnershipExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.ItemOwnership.Any(e => e.Id == id);
         }
     }
 }

@@ -10,57 +10,57 @@ using PnP_Universal.Models;
 namespace PnP_Universal.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Users")]
-    public class UsersController : Controller
+    [Route("api/Attributes")]
+    public class AttributesController : Controller
     {
         private readonly PnPContext _context;
 
-        public UsersController(PnPContext context)
+        public AttributesController(PnPContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: api/Attributes
         [HttpGet]
-        public IEnumerable<Users> GetUsers()
+        public IEnumerable<Attributes> GetAttributes()
         {
-            return _context.Users;
+            return _context.Attributes;
         }
 
-        // GET: api/Users/5
+        // GET: api/Attributes/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUsers([FromRoute] int id)
+        public async Task<IActionResult> GetAttributes([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
+            var attributes = await _context.Attributes.SingleOrDefaultAsync(m => m.Id == id);
 
-            if (users == null)
+            if (attributes == null)
             {
                 return NotFound();
             }
 
-            return Ok(users);
+            return Ok(attributes);
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Attributes/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers([FromRoute] int id, [FromBody] Users users)
+        public async Task<IActionResult> PutAttributes([FromRoute] int id, [FromBody] Attributes attributes)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != users.Id)
+            if (id != attributes.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(users).State = EntityState.Modified;
+            _context.Entry(attributes).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace PnP_Universal.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsersExists(id))
+                if (!AttributesExists(id))
                 {
                     return NotFound();
                 }
@@ -81,23 +81,23 @@ namespace PnP_Universal.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/Attributes
         [HttpPost]
-        public async Task<IActionResult> PostUsers([FromBody] Users users)
+        public async Task<IActionResult> PostAttributes([FromBody] Attributes attributes)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Users.Add(users);
+            _context.Attributes.Add(attributes);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (UsersExists(users.Id))
+                if (AttributesExists(attributes.Id))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -107,33 +107,33 @@ namespace PnP_Universal.Controllers
                 }
             }
 
-            return CreatedAtAction("GetUsers", new { id = users.Id }, users);
+            return CreatedAtAction("GetAttributes", new { id = attributes.Id }, attributes);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/Attributes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsers([FromRoute] int id)
+        public async Task<IActionResult> DeleteAttributes([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var users = await _context.Users.SingleOrDefaultAsync(m => m.Id == id);
-            if (users == null)
+            var attributes = await _context.Attributes.SingleOrDefaultAsync(m => m.Id == id);
+            if (attributes == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(users);
+            _context.Attributes.Remove(attributes);
             await _context.SaveChangesAsync();
 
-            return Ok(users);
+            return Ok(attributes);
         }
 
-        private bool UsersExists(int id)
+        private bool AttributesExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.Attributes.Any(e => e.Id == id);
         }
     }
 }

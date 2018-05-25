@@ -22,45 +22,45 @@ namespace PnP_Universal.Controllers
 
         // GET: api/Heroes
         [HttpGet]
-        public IEnumerable<Hero> GetHero()
+        public IEnumerable<Heroes> GetHeroes()
         {
-            return _context.Hero;
+            return _context.Heroes;
         }
 
         // GET: api/Heroes/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetHero([FromRoute] int id)
+        public async Task<IActionResult> GetHeroes([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var hero = await _context.Hero.SingleOrDefaultAsync(m => m.Id == id);
+            var heroes = await _context.Heroes.SingleOrDefaultAsync(m => m.Id == id);
 
-            if (hero == null)
+            if (heroes == null)
             {
                 return NotFound();
             }
 
-            return Ok(hero);
+            return Ok(heroes);
         }
 
         // PUT: api/Heroes/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutHero([FromRoute] int id, [FromBody] Hero hero)
+        public async Task<IActionResult> PutHeroes([FromRoute] int id, [FromBody] Heroes heroes)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != hero.Id)
+            if (id != heroes.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(hero).State = EntityState.Modified;
+            _context.Entry(heroes).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace PnP_Universal.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!HeroExists(id))
+                if (!HeroesExists(id))
                 {
                     return NotFound();
                 }
@@ -83,21 +83,21 @@ namespace PnP_Universal.Controllers
 
         // POST: api/Heroes
         [HttpPost]
-        public async Task<IActionResult> PostHero([FromBody] Hero hero)
+        public async Task<IActionResult> PostHeroes([FromBody] Heroes heroes)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Hero.Add(hero);
+            _context.Heroes.Add(heroes);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (HeroExists(hero.Id))
+                if (HeroesExists(heroes.Id))
                 {
                     return new StatusCodeResult(StatusCodes.Status409Conflict);
                 }
@@ -107,33 +107,33 @@ namespace PnP_Universal.Controllers
                 }
             }
 
-            return CreatedAtAction("GetHero", new { id = hero.Id }, hero);
+            return CreatedAtAction("GetHeroes", new { id = heroes.Id }, heroes);
         }
 
         // DELETE: api/Heroes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteHero([FromRoute] int id)
+        public async Task<IActionResult> DeleteHeroes([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var hero = await _context.Hero.SingleOrDefaultAsync(m => m.Id == id);
-            if (hero == null)
+            var heroes = await _context.Heroes.SingleOrDefaultAsync(m => m.Id == id);
+            if (heroes == null)
             {
                 return NotFound();
             }
 
-            _context.Hero.Remove(hero);
+            _context.Heroes.Remove(heroes);
             await _context.SaveChangesAsync();
 
-            return Ok(hero);
+            return Ok(heroes);
         }
 
-        private bool HeroExists(int id)
+        private bool HeroesExists(int id)
         {
-            return _context.Hero.Any(e => e.Id == id);
+            return _context.Heroes.Any(e => e.Id == id);
         }
     }
 }
