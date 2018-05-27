@@ -31,7 +31,7 @@ func main() {
 		return sendJSON(c, "data/template"+c.Param("id")+".json")
 	}, auth())
 
-	e.Logger.Fatal(e.Start("127.0.0.1:8080"))
+	e.Logger.Fatal(e.Start("127.0.0.1:9090"))
 }
 
 func sendJSON(c echo.Context, path string) error {
