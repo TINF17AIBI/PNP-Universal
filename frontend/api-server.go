@@ -11,25 +11,31 @@ import (
 func main() {
 	e := echo.New()
 
-	e.GET("/api/heroes", func(c echo.Context) (err error) {
+	g := e.Group("/api")
+
+	g.Use(middleware.BasicAuth(func(u, p string, c echo.Context) (bool, error) {
+		return u == "username" && p == "password", nil
+	}))
+
+	g.GET("/heroes", func(c echo.Context) (err error) {
 		return sendJSON(c, "data/heros.json")
-	}, auth())
+	})
 
-	e.GET("/api/adventures", func(c echo.Context) (err error) {
+	g.GET("/adventures", func(c echo.Context) (err error) {
 		return sendJSON(c, "data/adventures.json")
-	}, auth())
+	})
 
-	e.GET("/api/adventure/:id", func(c echo.Context) (err error) {
+	g.GET("/adventure/:id", func(c echo.Context) (err error) {
 		return sendJSON(c, "data/adventure"+c.Param("id")+".json")
-	}, auth())
+	})
 
-	e.GET("/api/templates", func(c echo.Context) (err error) {
+	g.GET("/templates", func(c echo.Context) (err error) {
 		return sendJSON(c, "data/templates.json")
-	}, auth())
+	})
 
-	e.GET("/api/template/:id", func(c echo.Context) (err error) {
+	g.GET("/template/:id", func(c echo.Context) (err error) {
 		return sendJSON(c, "data/template"+c.Param("id")+".json")
-	}, auth())
+	})
 
 	e.Logger.Fatal(e.Start("127.0.0.1:9090"))
 }
@@ -40,10 +46,4 @@ func sendJSON(c echo.Context, path string) error {
 		return err
 	}
 	return c.JSONBlob(http.StatusOK, bytes)
-}
-
-func auth() echo.MiddlewareFunc {
-	return middleware.BasicAuth(func(u, p string, c echo.Context) (bool, error) {
-		return u == "username" && p == "password", nil
-	})
 }
