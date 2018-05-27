@@ -1,0 +1,16 @@
+[{
+   "id": 1,
+   "title": "template1",
+   "description": "noob1",
+   "attributes": ["height"]
+}, {
+   "id": 2,
+   "title": "template2",
+   "description": "noob2",
+   "attributes": ["height"]
+}, {
+   "id": 3,
+   "title": "template3",
+   "description": "noob3",
+   "attributes": ["height"]
+}]

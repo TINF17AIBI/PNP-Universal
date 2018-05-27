@@ -1,6 +1,6 @@
 # webapp
 
-> PnP-Universal Frontend
+> PnP-Universal
 
 ## Build Setup
 
