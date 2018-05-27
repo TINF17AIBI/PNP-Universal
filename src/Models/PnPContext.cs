@@ -30,6 +30,14 @@ namespace PnP_Universal.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasColumnType("text");
+
+                entity.Property(e => e.InviteCode)
+                    .IsRequired()
+                    .HasColumnType("text");
+
                 entity.HasOne(d => d.IdNavigation)
                     .WithOne(p => p.Adventures)
                     .HasForeignKey<Adventures>(d => d.Id)
@@ -89,7 +97,11 @@ namespace PnP_Universal.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Stats).IsRequired();
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasColumnType("text");
+
+                entity.Property(e => e.Description).IsRequired();
 
                 entity.HasOne(d => d.IdNavigation)
                     .WithOne(p => p.Heroes)
@@ -180,10 +192,6 @@ namespace PnP_Universal.Models
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
                     .ValueGeneratedNever();
-
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(50);
 
                 entity.Property(e => e.Password)
                     .IsRequired()

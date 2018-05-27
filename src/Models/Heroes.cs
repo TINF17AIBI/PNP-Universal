@@ -10,7 +10,7 @@ namespace PnP_Universal.Models
         public int Owner { get; set; }
         public int Template { get; set; }
         public int? Adventure { get; set; }
-        public string Stats { get; set; }
+        public string Description{ get; set; }
 
         public Templates Id1 { get; set; }
         public Users Id2 { get; set; }
