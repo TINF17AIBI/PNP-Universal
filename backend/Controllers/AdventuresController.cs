@@ -22,9 +22,35 @@ namespace PnP_Universal.Controllers
 
         // GET: api/Adventures
         [HttpGet]
-        public IEnumerable<Adventures> GetAdventures()
+        public async Task<IActionResult> GetAdventures()
         {
-            return _context.Adventures;
+            var adventures =await  _context.Adventures.Select( n => new own
+            {
+                Id = n.Id,
+                Title = n.Name,
+                Description = n.Description,
+                Template_title = _context.Templates.Where(p => p.Id == n.IdNavigation.Id).Select(p => p.Name).SingleOrDefault()
+
+
+            }).ToListAsync();
+            var adventures2 = await _context.Adventures.Select(n => new joined
+            {
+                Id=n.Id,
+                Title=n.Name,
+                Description=n.Description,
+                own_hero= _context.Heroes.Where(p => p.Id==3).Select(p => p.Name).SingleOrDefault(),
+                game_master= _context.Users.Where(p => p.Id==n.Gamemaster).Select(p => p.Username).SingleOrDefault(),
+                template_name= _context.Templates.Where(p => p.Id == n.IdNavigation.Id).Select(p => p.Name).SingleOrDefault()
+            })
+            .ToListAsync();
+
+            var adventures3 = await _context.Adventures.Select(n => new final
+            {
+             own=adventures,
+             joined=adventures2
+            })
+            .SingleOrDefaultAsync();
+            return Ok(adventures3);
         }
 
         // GET: api/Adventures/5
