@@ -36,16 +36,16 @@
     </div>
     
     <div class="container">
-      <h1 class="display-4 mb-3">//php:Name des Abenteuers</h1>
+      <h1 class="display-4 mb-3">$AdventureName</h1>
       <div class="card bg-dark text-light">
 	 
 		<div class="card-body">
-			<h4 class="card-title">//php:Name des Characters</h4>
-			<p class="card-text">//php: Beschreibung des Characters</p>
+			<h4 class="card-title">$CharacterName</h4>
+			<p class="card-text">$CharacterDescription</p>
 		</div>
 		<div class="card-body">
 			<h5 class="card-title">Attribute</h5>
-			<p class="card-text">//php Attribute +Werte</p>
+			<p class="card-text">//php: Attribute +Werte</p>
 		</div>
 
 		<div class="card-body">
