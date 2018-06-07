@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>PNP Universal</title>
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/vnd.microsoft.icon">
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/stylesheet.css" type="text/css">
   <script defer src="assets/fa/fontawesome-all.js"></script>
 </head>
-
 <body class="text-light">
   <div class="container-fluid sticky-top bg-darker">
     <div class="container">
@@ -42,19 +39,3 @@
       </div>
     </div>
   </div>
-
-  <div class="container">
-    <h1 class="display-4 mb-3">HEADLINE</h1>
-    <div class="card bg-dark text-light">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-  </div>
-</body>
-
-</html>
