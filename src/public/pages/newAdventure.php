@@ -36,35 +36,19 @@
     </div>
     
     <div class="container">
-      <h1 class="display-4 mb-3">$AdventureName</h1>
-      <div class="card bg-dark text-light">
-        <div class="card-body"> <!-- php: foreach -->
-          <h4 class="card-title">$CharacterName</h4>
-	  <p class="card-text">$CharacterDescription</p>
-	  <div class="card-body">
-	    <h5 class="card-title">Items</h5>		
-	    <table class="table table-striped table-dark">
-	      <thead>
-	        <tr>
-		  <th scope="col">Type</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Amount</th>
-		  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td scope="col"><form><input type="text" name="ItemType$ID" value=$ItemType></form></td>
-                  <td scope="col"><form><input type="text" name="ItemName$ID" value=$ItemName></form></td>
-                  <td scope="col"><form><input type="text" name="ItemCount$ID" value=$ItemCount></form></td>
-		  <td scope="col"><button class="btn btn-xs">Save</button></td> <!-- Keine Ahnung wie mit HTML, ich glaub man braucht JS dafür -->
-                </tr>
-              </tbody>
-            </table>
-	    <!-- JavaScript: Add new Item -->
-          </div>
-        </div>
-      </div>
+      <h1 class="display-4 mb-3">NEW ADVENTURE</h1>
+      <button class="btn-primary btn-large"> <!--JavaScript: Template Selection (from own Templates?)-->
+        Choose Template
+      </button>
+      <form>
+        Adventure Name: 
+        <input type="text" name="AdventureName" maxlength="128" width=50% height=/><br/>
+	Invite Code: 
+	<input type="text" name="InviteCode" maxlength="50" width=50%/><br/>
+	Description:
+	<input type="text" name="Description" width=50% height=300%/><br/>
+      </form>
     </div>
+    
   </body>
 </html>
