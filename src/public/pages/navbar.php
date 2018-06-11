@@ -1,3 +1,8 @@
+<?php 
+if(session_status() != PHP_SESSION_ACTIVE) {
+    session_start();
+} ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,15 +10,18 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>PNP Universal</title>
   <link rel="shortcut icon" href="assets/favicon.ico" type="image/vnd.microsoft.icon">
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
   <link rel="stylesheet" href="assets/css/stylesheet.css" type="text/css">
   <script defer src="assets/fa/fontawesome-all.js"></script>
 </head>
 <body class="text-light">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   <div class="container-fluid sticky-top bg-darker">
     <div class="container">
       <div class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <i class="far fa-pencil mr-1"></i> PNP Universal</a>
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -22,15 +30,14 @@
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="navbar-nav navbar-dark ml-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">Main Page
-                <img src="assets/img/icon.png" width=50px height=24px />
+              <a class="nav-link" href="index.php">Dashboard
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Account Options</a>
+              <a class="nav-link" href="controlpanel.php">Account Settings</a>
             </li>
-            <li class="nav-item ml-3">
-              <a class="nav-link" href="#">Log Out
+            <li class="nav-item">
+              <a class="nav-link" href="pages/logout.php">Log Out
                 <i class="far fa-xs fa-sign-out"></i>
               </a>
             </li>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>PNP Universal</title>
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/vnd.microsoft.icon">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/stylesheet.css" type="text/css">
     <script defer src="assets/fa/fontawesome-all.js"></script>
   </head>
@@ -21,10 +21,10 @@
   			  <div class="collapse navbar-collapse" id="navbar">
   			    <ul class="navbar-nav navbar-dark ml-auto mt-2 mt-lg-0">
   			      <li class="nav-item">
-  			        <a class="nav-link" href="#">Register</a>
+  			        <a class="nav-link" href="#register-form">Sign Up</a>
   			      </li>
   						<li class="nav-item ml-3">
-  			        <a class="nav-link" href="#">Log in <i class="far fa-xs fa-sign-in"></i></a>
+  			        <a class="nav-link" href="#" data-toggle="modal" data-target="#login-modal">Log in <i class="far fa-xs fa-sign-in"></i></a>
   			      </li>
   			    </ul>
   			  </div>
@@ -41,7 +41,7 @@
         <p class="text-center font-weight-bold px-2 mb-2">
           Try it now:
         </p>
-    		<button class="btn btn-success py-2 px-4 align-center" onclick="#">Sign up</button>
+    		<a href="#register-form" class="btn btn-success py-2 px-4 align-center">Sign up</a>
       </div>
     </div>
 
@@ -103,30 +103,62 @@
           <i class="fal fa-paint-brush" style="font-size:120px"></i>
         </div>
       </div>
-
-        <div class="row align-items-center bg-darker py-5 mb-3">
+        
+        <div id="register-form" class="row align-items-center bg-darker py-5 mb-3">
         <div class="col text-center">
-          <h3>Sign up now!</h3>
-            <form>
+          <h3>Get started now!</h3>
+            <form action="pages/register.php" method="post">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" class="form-control bg-main text-light">
+                    <label for="reg-username">Username</label>
+                    <input type="text" name="reg-username" id="reg-username" class="register-form form-control bg-dark text-light border-dark">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control">
+                    <label for="reg-password">Password</label>
+                    <input type="password" name="reg-password" id="reg-password" class="register-form form-control bg-dark text-light border-dark">
                 </div>
                 <div class="form-group">
-                    <label for="repeat">Repeat password</label>
-                    <input type="password" name="repeat" id="repeat" class="form-control">
+                    <label for="reg-repeat">Repeat password</label>
+                    <input type="password" name="reg-repeat" id="reg-repeat" class="register-form form-control bg-dark text-light border-dark">
                 </div>
+                <input type="submit" class="btn btn-success py-2 px-4 align-center" value="Sign up">
             </form>
         </div>
       </div>
+        
+        
+        
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content bg-darker text-light">
+              <div class="modal-header">
+                <h5 class="modal-title" id="login-modal-label">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="pages/login.php" method="post">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" class="login-form form-control bg-dark text-light border-dark">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="login-form form-control bg-dark text-light border-dark">
+                    </div>
+                    <input type="submit" class="btn btn-success" value="Login">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
 
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
