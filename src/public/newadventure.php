@@ -15,25 +15,33 @@ foreach($templates as $t) {
     $templates2[] = $t;
 }
 
+if(isset($_GET["t"])) {
+    $getTemplate = $conn->prepare('SELECT * FROM Templates WHERE ID = :id');
+    $getTemplate->bindParam(':id', $_GET["t"], PDO::PARAM_INT);
+    $getTemplate->execute();
+    $template = $getTemplate->fetch();
+}
+
+
 ?>
     
     <div class="container">
       <h1 class="display-4 my-3">New Adventure</h1>
       
-        <form action="newadventure.php" method="get">
-             <div class="form-group">
-                <label for="templateSelect">Select template:</label>
-                <select class="form-control" id="templateSelect" name="t" onchange="this.form.submit();">
-                  <?php foreach($templates2 as $t) { ?>
-                    <option value="<?php echo $t["ID"]; ?>"<?php if(isset($_GET["t"]) && $_GET["t"] == $t["ID"]) { echo " selected"; } ?>><?php echo $t["Name"]; ?> (by <?php echo $t["CreatorName"]; ?>)</option>
-                  <?php } ?>
-                </select>
-              </div>
+        <form action="newadventure.php" method="get" class="form-inline mb-3">
+            <select class="form-control" id="templateSelect" name="t" onchange="this.form.submit();">
+              <?php foreach($templates2 as $t) { ?>
+                <option value="<?php echo $t["ID"]; ?>"<?php if(isset($_GET["t"]) && $_GET["t"] == $t["ID"]) { echo " selected"; } ?>><?php echo $t["Name"]; ?> (by <?php echo $t["CreatorName"]; ?>)</option>
+              <?php } ?>
+            </select>
+            <button type="submit" class="btn btn-secondary ml-3">Select</button>
         </form>
         
         <?php if(isset($_GET["t"])) { ?>
         
-        <p><?php echo $t["Description"]; ?></p>
+        <h3>Creating new adventure with template <?php echo $template["Name"]; ?></h3>
+        
+        <p><?php echo $template["Description"]; ?></p>
         
         <form action="pages/createadventure.php" method="post">
             <div class="form-group">
