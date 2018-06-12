@@ -29,6 +29,9 @@ if(session_status() != PHP_SESSION_ACTIVE) {
         </button>
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="navbar-nav navbar-dark ml-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <span class="navbar-text text-light mr-3">Logged in as: <strong><?php echo $_SESSION["username"]; ?></strong></span>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="index.php">Dashboard
               </a>

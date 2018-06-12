@@ -28,4 +28,4 @@ $insert->execute();
 
 ?>
 
-<p>Template created successfully. <a href="../index.php">Return to dashboard.</a></p>
+<p>Adventure created successfully. <a href="../index.php">Return to dashboard.</a></p>

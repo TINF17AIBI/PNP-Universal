@@ -27,4 +27,4 @@ foreach($attr as $a) {
 
 ?>
 
-<p>Template created successfully. You can <a href="../index.php">go back to the dashboard</a> or <a href="newadventure.php?t=<?php echo $id ?>">create a new adventure with this template right away.</a></p>
+<p>Template created successfully. You can <a href="../index.php">go back to the dashboard</a> or <a href="../newadventure.php?t=<?php echo $id ?>">create a new adventure with this template right away.</a></p>
