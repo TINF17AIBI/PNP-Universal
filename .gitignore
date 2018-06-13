@@ -1,4 +1,2 @@
-backend/.vs/
-backend/bin/
-backend/obj/
 .vs/
+.idea/

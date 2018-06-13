@@ -1,5 +1,5 @@
 <?php require_once("navbar.php");
-require_once("../config.php");
+require_once("config.php");
 
 $getOwnAdventures = $conn->prepare('SELECT * FROM Adventures WHERE GameMaster = :id');
 $getOwnAdventures->bindParam(':id', $_SESSION["userid"], PDO::PARAM_INT);
@@ -75,9 +75,9 @@ foreach($joinedAdventures as $j) {
                     <button type="submit" class="btn btn-secondary ">Join Adventure</button>
               </form>
               <p class="text-center">- or -<br>
-                <a href="newadventure.php" class="btn btn-secondary mt-3">Create New Adventure</a></p>
+                <a href="/PNP-Universal/pages/newadventure.php" class="btn btn-secondary mt-3">Create New Adventure</a></p>
               <p class="text-center">- or -<br>
-                <a href="newtemplate.php" class="btn btn-secondary mt-3">Create New Template</a></p>
+                <a href="/PNP-Universal/pages/newtemplate.php" class="btn btn-secondary mt-3">Create New Template</a></p>
           </div>
         </div>
       </div>

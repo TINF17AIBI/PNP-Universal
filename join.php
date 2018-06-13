@@ -7,12 +7,12 @@ $getAdventure->execute();
 $adventure = $getAdventure->fetch();
 
 if(empty($adventure)) {
-    echo "Adventure not found. <a href=\"../index.php\">Return to dashboard.</a>";
+    echo "Adventure not found. <a href=\"/PNP-Universal/index.php\">Return to dashboard.</a>";
     die();
 }
 
 if($adventure["GameMaster"] == $_SESSION["userid"]) {
-    echo "Can't join own adventure. <a href=\"../index.php\">Return to dashboard.</a>";
+    echo "Can't join own adventure. <a href=\"/PNP-Universal/index.php\">Return to dashboard.</a>";
     die();
 }
 
@@ -23,7 +23,7 @@ $checkIfJoined->execute();
 $joined = $checkIfJoined->fetch();
 
 if(!empty($joined)) {
-    echo "Already joined. <a href=\"../index.php\">Return to dashboard.</a>";
+    echo "Already joined. <a href=\"/PNP-Universal/index.php\">Return to dashboard.</a>";
     die();
 }
 
