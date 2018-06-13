@@ -6,7 +6,7 @@ $getOwnAdventures->bindParam(':id', $_SESSION["userid"], PDO::PARAM_INT);
 $getOwnAdventures->execute();
 $ownAdventures = $getOwnAdventures->fetchAll();
 
-$getJoinedAdventures = $conn->prepare('SELECT * FROM joinedadventures WHERE User = :user');
+$getJoinedAdventures = $conn->prepare('SELECT * FROM JoinedAdventures WHERE User = :user');
 $getJoinedAdventures->bindParam(':user', $_SESSION["userid"], PDO::PARAM_INT);
 $getJoinedAdventures->execute();
 $joinedAdventures = $getJoinedAdventures->fetchAll();

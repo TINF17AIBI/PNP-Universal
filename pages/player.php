@@ -21,7 +21,7 @@ $getGM->bindParam(':gm', $adventure["GameMaster"], PDO::PARAM_INT);
 $getGM->execute();
 $gamemaster = $getGM->fetch();
 
-$getPlayers = $conn->prepare('SELECT * FROM joinedadventures WHERE Adventure = :adv');
+$getPlayers = $conn->prepare('SELECT * FROM JoinedAdventures WHERE Adventure = :adv');
 $getPlayers->bindParam(':adv', $adventure["ID"], PDO::PARAM_INT);
 $getPlayers->execute();
 $players = $getPlayers->fetchAll();

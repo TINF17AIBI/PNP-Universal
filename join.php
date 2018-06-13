@@ -16,7 +16,7 @@ if($adventure["GameMaster"] == $_SESSION["userid"]) {
     die();
 }
 
-$checkIfJoined = $conn->prepare('SELECT * FROM joinedadventures WHERE User = :user AND Adventure = :adventure');
+$checkIfJoined = $conn->prepare('SELECT * FROM JoinedAdventures WHERE User = :user AND Adventure = :adventure');
 $checkIfJoined->bindParam(':user', $_SESSION["userid"], PDO::PARAM_INT);
 $checkIfJoined->bindParam(':adventure', $adventure["ID"], PDO::PARAM_INT);
 $checkIfJoined->execute();

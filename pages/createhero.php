@@ -31,7 +31,7 @@ $createHero->execute();
 
 $heroId = $conn->lastInsertId();
 
-$insertValues = $conn->prepare('INSERT INTO attributeownership (Attribute, Hero, Val) VALUES (:attr, :hero, :val)');
+$insertValues = $conn->prepare('INSERT INTO AttributeOwnership (Attribute, Hero, Val) VALUES (:attr, :hero, :val)');
 $insertValues->bindParam(':hero', $heroId, PDO::PARAM_INT);
 
 foreach($attributes as $a) {
@@ -40,7 +40,7 @@ foreach($attributes as $a) {
     $insertValues->execute();
 }
 
-$joinAdventure = $conn->prepare('INSERT INTO joinedadventures (Adventure, User, Hero) VALUES (:adventure, :user, :hero)');
+$joinAdventure = $conn->prepare('INSERT INTO JoinedAdventures (Adventure, User, Hero) VALUES (:adventure, :user, :hero)');
 $joinAdventure->bindParam(':adventure', $adventure, PDO::PARAM_INT);
 $joinAdventure->bindParam(':user', $user, PDO::PARAM_INT);
 $joinAdventure->bindParam(':hero', $heroId, PDO::PARAM_INT);

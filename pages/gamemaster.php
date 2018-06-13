@@ -1,6 +1,6 @@
 <?php 
 
-$getPlayers = $conn->prepare('SELECT * FROM joinedadventures WHERE Adventure = :adv');
+$getPlayers = $conn->prepare('SELECT * FROM JoinedAdventures WHERE Adventure = :adv');
 $getPlayers->bindParam(':adv', $adventure["ID"], PDO::PARAM_INT);
 $getPlayers->execute();
 $players = $getPlayers->fetchAll();
@@ -36,7 +36,7 @@ if(isset($_POST["update"])) {
     }
     
     if($_POST["update"] == "attr") {
-        $updateAttribute = $conn->prepare('UPDATE attributeownership SET Val = :val WHERE (Hero = :hero AND Attribute = :attr)');
+        $updateAttribute = $conn->prepare('UPDATE AttributeOwnership SET Val = :val WHERE (Hero = :hero AND Attribute = :attr)');
         $updateAttribute->bindParam(':hero', $_GET["h"], PDO::PARAM_INT);
         foreach($attributes as $a) {
             $updateAttribute->bindParam(':attr', $a["Attribute"], PDO::PARAM_STR);
@@ -49,7 +49,7 @@ if(isset($_POST["update"])) {
     
     if($_POST["update"] == "item") {
         
-        $updateItem = $conn->prepare('UPDATE items SET Name = :name, Type = :type, Count = :count WHERE ID = :id');
+        $updateItem = $conn->prepare('UPDATE Items SET Name = :name, Type = :type, Count = :count WHERE ID = :id');
         
         foreach($items as $i) {
             $updateItem->bindParam(':id', $i["ID"], PDO::PARAM_INT);

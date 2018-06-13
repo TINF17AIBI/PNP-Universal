@@ -17,7 +17,7 @@ $insert->execute();
 
 $id = $conn->lastInsertId();
 
-$inserta = $conn->prepare('INSERT INTO attributes (Name, Template) VALUES (:name, :template)');
+$inserta = $conn->prepare('INSERT INTO Attributes (Name, Template) VALUES (:name, :template)');
 $inserta->bindParam(':template', $id, PDO::PARAM_INT);
 
 foreach($attr as $a) {
