@@ -36,7 +36,7 @@ $insertValues->bindParam(':hero', $heroId, PDO::PARAM_INT);
 
 foreach($attributes as $a) {
     $insertValues->bindParam(':attr', $a["name"], PDO::PARAM_STR);
-    $insertValues->bindParam(':val', $a["val"], PDO::PARAM_INT);
+    $insertValues->bindParam(':val', intval($a["val"]), PDO::PARAM_INT);
     $insertValues->execute();
 }
 
