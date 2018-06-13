@@ -75,9 +75,9 @@ foreach($joinedAdventures as $j) {
                     <button type="submit" class="btn btn-secondary ">Join Adventure</button>
               </form>
               <p class="text-center">- or -<br>
-                <a href="/PNP-Universal/pages/newadventure.php" class="btn btn-secondary mt-3">Create New Adventure</a></p>
+                <a href="/PNP-Universal/newadventure.php" class="btn btn-secondary mt-3">Create New Adventure</a></p>
               <p class="text-center">- or -<br>
-                <a href="/PNP-Universal/pages/newtemplate.php" class="btn btn-secondary mt-3">Create New Template</a></p>
+                <a href="/PNP-Universal/newtemplate.php" class="btn btn-secondary mt-3">Create New Template</a></p>
           </div>
         </div>
       </div>
