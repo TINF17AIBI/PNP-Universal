@@ -2,12 +2,12 @@
 
     session_start();
 
-    require_once("../../config.php");
+    require_once("../config.php");
 
     if(!isset($_POST["old"]) || !isset($_POST["new"]) || !isset($_POST["repeat"])) { ?>
 
     <p>Please fill in all fields. <a href="../index.php">Return to home page</a></p>
-        
+
 <?php die(); }
 
     $old = $_POST["old"];
@@ -17,7 +17,7 @@
     if($new != $repeat) { ?>
 
     <p>Passwords do not match. <a href="../index.php">Return to home page</a></p>
-        
+
 <?php die(); }
 
     $getUser = $conn->prepare('SELECT * FROM Users WHERE ID = :id');
@@ -26,9 +26,9 @@
     $user = $getUser->fetch();
 
     if(!password_verify($old, $user["Password"])) { ?>
-        
-    <p>Old password incorrect. <a href="../index.php">Return to home page</a></p>    
-        
+
+    <p>Old password incorrect. <a href="../index.php">Return to home page</a></p>
+
 <?php die(); }
 
     $hash = password_hash($new, PASSWORD_DEFAULT);
@@ -40,5 +40,4 @@
 
 ?>
 
-<p>Password updated successfully. <a href="../index.php">Return to home page</a></p>    
-
+<p>Password updated successfully. <a href="../index.php">Return to home page</a></p>

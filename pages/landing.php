@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>PNP Universal</title>
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/vnd.microsoft.icon">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/stylesheet.css" type="text/css">
-    <script defer src="assets/fa/fontawesome-all.js"></script>
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/stylesheet.css" type="text/css">
+    <script defer src="../assets/fa/fontawesome-all.js"></script>
   </head>
   <body class="text-light">
     <div class="container-fluid sticky-top bg-darker">
       <div class="container">
         <div class="navbar navbar-expand-lg navbar-dark">
-          <a class="navbar-brand" href="index.html"><i class="far fa-pencil mr-1"></i> PNP Universal</a>
+          <a class="navbar-brand" href="../index.php"><i class="far fa-pencil mr-1"></i> PNP Universal</a>
           <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
     			  <span class="navbar-toggler-icon"></span>
     			</button>
@@ -103,7 +103,7 @@
           <i class="fal fa-paint-brush" style="font-size:120px"></i>
         </div>
       </div>
-        
+
         <div id="register-form" class="row align-items-center bg-darker py-5 mb-3">
         <div class="col text-center">
           <h3>Get started now!</h3>
@@ -124,9 +124,9 @@
             </form>
         </div>
       </div>
-        
-        
-        
+
+
+
         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content bg-darker text-light">
@@ -152,13 +152,13 @@
             </div>
           </div>
         </div>
-        
-        
+
+
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js" ></script>
   </body>
 </html>

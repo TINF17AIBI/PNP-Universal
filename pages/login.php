@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 session_start();
 
-    require_once("../../config.php");
+    require_once("../config.php");
 
     $login = $_POST["username"];
     $password = $_POST["password"];
@@ -22,13 +22,13 @@ session_start();
 
 
     if($_SESSION["loggedin"]) { ?>
-        
+
     <p>Login successful. <a href="../index.php">Return to home page</a></p>
 
 <?php } else { ?>
-        
+
     <p>Login failed. <a href="../index.php">Return to home page</a></p>
-        
-<?php } 
+
+<?php }
 
 ?>

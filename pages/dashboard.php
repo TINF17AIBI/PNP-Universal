@@ -1,4 +1,4 @@
-<?php require_once("navbar.php"); 
+<?php require_once("navbar.php");
 require_once("../config.php");
 
 $getOwnAdventures = $conn->prepare('SELECT * FROM Adventures WHERE GameMaster = :id');
@@ -27,24 +27,24 @@ foreach($joinedAdventures as $j) {
 }
 
 ?>
-    
+
     <div class="container">
       <h1 class="display-4 my-3">My Adventures</h1>
       <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#newAdventureModal"><i class="fas fa-plus"></i> Join/Create Adventure</button>
-        
+
         <h3 class="mt-3">Created Adventures</h3>
-        
+
         <?php foreach($ownAdventures as $a) { ?>
-        
+
         <a href="play.php?a=<?php echo $a["ID"] ?>"><div class="card bg-dark text-light my-3">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $a["Name"]; ?></h5>
                 <p class="card-text"><?php echo $a["Description"]; ?></p>
             </div>
         </div></a>
-        
+
         <?php } ?>
-        
+
         <h3 class="mt-3">Joined Adventures</h3>
 
         <?php foreach($joined as $a) { ?>
@@ -82,6 +82,6 @@ foreach($joinedAdventures as $j) {
         </div>
       </div>
     </div>
-    
+
   </body>
 </html>

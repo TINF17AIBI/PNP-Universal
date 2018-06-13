@@ -1,11 +1,11 @@
 <?php
 
-    require_once("../../config.php");
+    require_once("../config.php");
 
     if(!isset($_POST["reg-username"]) || !isset($_POST["reg-password"]) || !isset($_POST["reg-repeat"])) { ?>
 
     <p>Please fill in all fields. <a href="../index.php">Return to home page</a></p>
-        
+
 <?php die(); }
 
     $login = $_POST["reg-username"];
@@ -15,7 +15,7 @@
     if($password != $repeat) { ?>
 
     <p>Passwords do not match. <a href="../index.php">Return to home page</a></p>
-        
+
 <?php die(); }
 
     $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -26,9 +26,9 @@
     $existingUser = $lookupUser->fetchAll();
 
     if(count($existingUser) != 0) { ?>
-        
-    <p>User already exists. <a href="../index.php">Return to home page</a></p>    
-        
+
+    <p>User already exists. <a href="../index.php">Return to home page</a></p>
+
 <?php die(); }
 
     $createUser = $conn->prepare('INSERT INTO Users (Username, Password) VALUES (:login, :password)');
@@ -38,5 +38,4 @@
 
 ?>
 
-<p>User created. <a href="../index.php">Return to home page</a></p>    
-
+<p>User created. <a href="../index.php">Return to home page</a></p>

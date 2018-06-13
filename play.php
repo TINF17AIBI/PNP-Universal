@@ -1,5 +1,5 @@
-<?php require_once("pages/navbar.php"); 
-require_once("../config.php");
+<?php require_once("pages/navbar.php");
+require_once("config.php");
 
 $getAdventure = $conn->prepare("SELECT * FROM Adventures WHERE ID = :id");
 $getAdventure->bindParam(':id', $_GET["a"], PDO::PARAM_INT);
